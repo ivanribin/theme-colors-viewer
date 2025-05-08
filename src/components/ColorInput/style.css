@@ -1,0 +1,8 @@
+.color-input {
+    height: 150px;
+    width: 150px;
+}
+
+.color-input:hover {
+    cursor: crosshair;
+}
