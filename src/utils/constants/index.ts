@@ -10,3 +10,11 @@ export const defaultThemeRoot: TThemeColorsRoot = [
     { id: "--color-neutral-800", label: "neutral 800", value: "#333333" },
     { id: "--color-neutral-900", label: "neutral 900", value: "#000000" },
 ];
+
+export const THEME_COLORS_ROOT_LOCAL_STORAGE_KEY: string = "themeColorsRoot";
+
+export const getInitialThemeColorsRoot = (): TThemeColorsRoot => {
+    const savedRoot = localStorage.getItem(THEME_COLORS_ROOT_LOCAL_STORAGE_KEY);
+
+    return !savedRoot ? defaultThemeRoot : JSON.parse(savedRoot);
+};

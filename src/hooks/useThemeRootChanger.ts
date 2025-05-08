@@ -1,13 +1,17 @@
+import { useEffect, useState } from "react";
+import {
+    getInitialThemeColorsRoot,
+    THEME_COLORS_ROOT_LOCAL_STORAGE_KEY,
+} from "@utils/constants";
 import {
     type IRootFieldData,
     type TThemeColorsRoot,
 } from "@domains/ThemeColorsRoot";
-import { defaultThemeRoot } from "@utils/constants";
-import { useEffect, useState } from "react";
 
 const useThemeRootChanger = () => {
-    const [themeRoot, setThemeRoot] =
-        useState<TThemeColorsRoot>(defaultThemeRoot);
+    const [themeRoot, setThemeRoot] = useState<TThemeColorsRoot>(
+        getInitialThemeColorsRoot()
+    );
 
     const updateThemeRoot = (newRoot: TThemeColorsRoot): void => {
         const root = document.documentElement;
@@ -15,6 +19,11 @@ const useThemeRootChanger = () => {
         newRoot.forEach((colorData) => {
             root.style.setProperty(colorData.id, colorData.value);
         });
+
+        localStorage.setItem(
+            THEME_COLORS_ROOT_LOCAL_STORAGE_KEY,
+            JSON.stringify(newRoot)
+        );
     };
 
     const updateThemeRootField = (rootFieldData: IRootFieldData): void => {
@@ -41,6 +50,11 @@ const useThemeRootChanger = () => {
 
             return updatedRoot;
         });
+
+        localStorage.setItem(
+            THEME_COLORS_ROOT_LOCAL_STORAGE_KEY,
+            JSON.stringify(themeRoot)
+        );
     };
 
     useEffect(() => {
