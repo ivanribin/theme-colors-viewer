@@ -1,38 +1,55 @@
-export interface IThemeColorsRoot {
-    primary: string;
-    secondary: string;
-    tertiary: string;
-    neutral100: string;
-    neutral200: string;
-    neutral500: string;
-    neutral800: string;
-    neutral900: string;
-}
-
-export const themeColorsRootIdsList: string[] = [
-    "--color-primary",
-    "--color-secondary",
-    "--color-tertiary",
-    "--color-neutral-100",
-    "--color-neutral-200",
-    "--color-neutral-500",
-    "--color-neutral-800",
-    "--color-neutral-900",
-];
+import {
+    type IRootFieldData,
+    type TThemeColorsRoot,
+} from "@domains/ThemeColorsRoot";
+import { defaultThemeRoot } from "@utils/constants";
+import { useEffect, useState } from "react";
 
 const useThemeRootChanger = () => {
-    const updateThemeRoot = (newRoot: IThemeColorsRoot): void => {
+    const [themeRoot, setThemeRoot] =
+        useState<TThemeColorsRoot>(defaultThemeRoot);
+
+    const updateThemeRoot = (newRoot: TThemeColorsRoot): void => {
         const root = document.documentElement;
 
-        const newRootList = Object.values(newRoot);
-
-        newRootList.forEach((fieldValue, index) => {
-            root.style.setProperty(themeColorsRootIdsList[index], fieldValue);
+        newRoot.forEach((colorData) => {
+            root.style.setProperty(colorData.id, colorData.value);
         });
     };
 
+    const updateThemeRootField = (rootFieldData: IRootFieldData): void => {
+        const root = document.documentElement;
+
+        root.style.setProperty(rootFieldData.id, rootFieldData.value);
+
+        setThemeRoot((prevRoot) => {
+            const updatedRoot = [...prevRoot];
+
+            const updatedFieldIndex = updatedRoot.findIndex(
+                (fieldData) => fieldData.id === rootFieldData.id
+            );
+
+            if (updatedFieldIndex === -1) {
+                console.error(
+                    "You used incorrect color inputs in theme root setting"
+                );
+
+                return updatedRoot;
+            }
+
+            updatedRoot[updatedFieldIndex].value = rootFieldData.value;
+
+            return updatedRoot;
+        });
+    };
+
+    useEffect(() => {
+        updateThemeRoot(themeRoot);
+    }, []);
+
     return {
-        updateThemeRoot,
+        themeRoot,
+        updateThemeRootField,
     };
 };
 
