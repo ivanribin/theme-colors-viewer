@@ -1,0 +1,20 @@
+.copyable-label {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+.copyable-label:hover {
+    cursor: pointer;
+}
+
+.copyable-label:hover img {
+    transform: rotate(-20deg);
+}
+
+.copyable-label img {
+    margin-right: 10px;
+
+    transition: .35s;
+}

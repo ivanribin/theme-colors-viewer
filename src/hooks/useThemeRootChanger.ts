@@ -13,6 +13,8 @@ const useThemeRootChanger = () => {
         getInitialThemeColorsRoot()
     );
 
+    console.log(themeRoot);
+
     const updateThemeRoot = (newRoot: TThemeColorsRoot): void => {
         const root = document.documentElement;
 

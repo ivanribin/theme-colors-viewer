@@ -19,7 +19,7 @@ const ColorInput = ({
         setColor(event.target.value);
     };
 
-    return <input type="color" name={name} value={color} onChange={handleChange} />;
+    return <input className="color-input" type="color" name={name} value={color} onChange={handleChange} />;
 };
 
 export default ColorInput;
