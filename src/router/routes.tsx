@@ -3,7 +3,7 @@ import HomePage from "@pages/Home";
 import NotFoundPage from "@pages/NotFound";
 import type { RouteObject } from "react-router";
 
-const paths = {
+export const paths = {
     HOME: {
         id: "home",
         path: "/",

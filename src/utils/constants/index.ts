@@ -13,6 +13,14 @@ export const defaultThemeRoot: TThemeColorsRoot = [
 
 export const THEME_COLORS_ROOT_LOCAL_STORAGE_KEY: string = "themeColorsRoot";
 
+export const enum SpriteIconsIds {
+    PALETTE_ICON = "palette-icon",
+    PICTURE_ICON = "picture-icon",
+    COPY_ICON = "copy-icon",
+}
+
+export const NAVIGATION_ICON_SIZE: string = "50px";
+
 export const getInitialThemeColorsRoot = (): TThemeColorsRoot => {
     const savedRoot = localStorage.getItem(THEME_COLORS_ROOT_LOCAL_STORAGE_KEY);
 
