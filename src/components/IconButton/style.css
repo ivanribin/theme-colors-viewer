@@ -1,0 +1,7 @@
+.icon-button {
+    transition: transform 0.35s;
+}
+
+.icon-button:hover {
+    transform: rotate(-35deg);
+}
