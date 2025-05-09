@@ -1,8 +1,9 @@
+import IconButton from "@components/IconButton";
 import ColorInput from "@components/ColorInput";
 import { type IColorData } from "@domains/ThemeColorsRoot";
+import { SpriteIconsIds } from "@utils/constants";
 import { type ReactElement } from "react";
 import "./style.css";
-import CopyableLabel from "@components/CopyableLabel";
 
 export interface IColorsSettingsBlockProps {
     colorData: IColorData;
@@ -11,11 +12,15 @@ export interface IColorsSettingsBlockProps {
 const ColorsSettingsBlock = ({
     colorData,
 }: IColorsSettingsBlockProps): ReactElement => {
+    const copyLabelToClipboard = (): void => {
+        navigator.clipboard.writeText(colorData.value);
+    };
+
     return (
         <div className="colors-settings-block">
             <div className="title">
-                {`${colorData.label} - `}
-                <CopyableLabel label={colorData.value} />
+                {`${colorData.label} - ${colorData.value}`}
+                <IconButton iconId={SpriteIconsIds.COPY_ICON} onClick={copyLabelToClipboard}/>
             </div>
             <ColorInput
                 key={colorData.id}
