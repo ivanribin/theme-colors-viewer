@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent, type ReactElement } from "react";
 import "./style.css";
 
+
 export interface IColorInputProps {
     initialValue: string;
     name: string;
@@ -12,6 +13,8 @@ const ColorInput = ({
     name,
     onChange = () => {},
 }: IColorInputProps): ReactElement => {
+   
+
     const [color, setColor] = useState<string>(initialValue);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {

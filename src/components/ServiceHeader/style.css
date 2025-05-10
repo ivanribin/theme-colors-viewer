@@ -1,0 +1,21 @@
+.services-header {
+  width: 816px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.services-subtitle {
+  font-size: 11px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.services-title {
+  font-size: 53px;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0;
+  max-width: 100%;
+}
