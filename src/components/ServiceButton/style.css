@@ -1,0 +1,17 @@
+.services-button {
+  width: 392px;
+  height: 68px;
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  border: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 auto 80px auto; 
+}
+
+.services-button:hover {
+  background-color: var(--color-button-primary-hover-bg);
+}

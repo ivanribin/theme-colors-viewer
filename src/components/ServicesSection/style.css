@@ -1,0 +1,12 @@
+.services-section {
+  width: 100%;
+  height: 935.91px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  padding: 80px 0;
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+}
